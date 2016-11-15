@@ -35,12 +35,27 @@ class ViewController: UIViewController {
         userIsInTheMiddleOfTyping = true
     }
     
-    private var displayValue: Double {
+    private var displayValue: Double? {
         get{
-            return Double(display.text!)!
+            if let text = display.text,
+                value = formatter.numberFromString(text)?.doubleValue{
+                return value
+            }
+            else {
+                return nil
+            }
         }
         set{
-            display.text = String(newValue)
+            if let value = newValue{
+                display.text = formatter.stringFromNumber(value)
+                formula.text = brain.description + (brain.isPartialResult ? "..." : "=")
+            }
+            else{
+                display.text = " "
+                formula.text = " "
+                userIsInTheMiddleOfTyping = false
+            }
+            
         }
     }
     
@@ -63,11 +78,24 @@ class ViewController: UIViewController {
             else{
                 display.text = "0"
                 userIsInTheMiddleOfTyping = false
-                
             }
             
         }
             
+    }
+    
+    var savedProgram: CalculatorBrain.PropertyList?
+   
+    @IBAction func save() {
+        savedProgram = brain.program
+    }
+    
+    
+    @IBAction func get() {
+        if savedProgram != nil{
+            brain.program = savedProgram!
+            displayValue = brain.result
+        }
     }
     
     
@@ -75,7 +103,10 @@ class ViewController: UIViewController {
     
     @IBAction private func performOperation(sender: UIButton) {
         if userIsInTheMiddleOfTyping {
-            brain.setOperand(displayValue)
+            if let value = displayValue{
+                brain.setOperand(value)
+            }
+            
         }
         
         userIsInTheMiddleOfTyping = false

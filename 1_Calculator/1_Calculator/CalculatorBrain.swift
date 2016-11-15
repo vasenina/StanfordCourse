@@ -12,6 +12,7 @@ import Foundation
 class CalculatorBrain
 {
     private var accumulator = 0.0
+    private var internalProgram = [AnyObject]()
     
     var result: Double{
         get{
@@ -48,16 +49,21 @@ class CalculatorBrain
     
     func setOperand (operand:Double){
         accumulator = operand
-        descriptionAccumulator = String(format:"%g", accumulator)
+        descriptionAccumulator = formatter.stringFromNumber(accumulator) ?? ""
+        internalProgram.append(operand)
     }
     
     func clearAll(){
         descriptionAccumulator = "0"
         accumulator = 0.0
+        pending = nil
+        currentPrecendence = Int.max
+        internalProgram.removeAll()
     }
     
     
     private var operations: Dictionary <String, Operation> = [
+        "rand" : Operation.NullaruOperation(drand48, "rand()"),
         "π" : Operation.Constant(M_PI), //M_PI,
         "e" : Operation.Constant(M_E),
         "±" : Operation.UnaryOperation({-$0}, {"-("+$0+")"}),
@@ -72,7 +78,7 @@ class CalculatorBrain
     ]
     
     private enum Operation{
-        //case NullaruOperation(()->Double, String)
+        case NullaruOperation(()->Double, String)
         case Constant(Double)
         case UnaryOperation((Double) -> Double, (String)->String)
         case BinaryOperation((Double, Double) -> Double, (String, String)->String, Int)
@@ -82,8 +88,12 @@ class CalculatorBrain
     
     
     func performOperation (symbol: String){
+        internalProgram.append(symbol)
         if let operation = operations[symbol]{
             switch operation{
+            case .NullaruOperation(let function, let descriptionValue):
+                accumulator = function()
+                descriptionAccumulator = descriptionValue
             case .Constant(let value):
                 accumulator=value
                 descriptionAccumulator = symbol
@@ -113,6 +123,28 @@ class CalculatorBrain
         }
     }
     
+    
+    typealias PropertyList = AnyObject
+    var program: PropertyList{
+        get{
+            return internalProgram
+            
+        }
+        set{
+            clearAll()
+            if let arrayOfOps = newValue as? [AnyObject]{
+                for op in arrayOfOps{
+                    if let operand  = op as? Double{
+                        setOperand(operand)
+                    }
+                    else if let operation = op as? String{
+                        performOperation(operation)
+                    }
+                }
+            }
+        }
+    }
+    
     private var pending: PendingBinaryOperationInfo?
     
     private struct PendingBinaryOperationInfo{
@@ -122,3 +154,20 @@ class CalculatorBrain
         var descriptionOperand: String
     }
 }
+
+
+class CalculatorFormatter: NSNumberFormatter{
+    required init?(coder aDecoder:NSCoder){
+        super.init(coder: aDecoder)
+    }
+    
+    override init(){
+        super.init()
+        self.locale = NSLocale.currentLocale()
+        self.numberStyle = .DecimalStyle
+        self.maximumFractionDigits = 6
+        self.notANumberSymbol = "Error"
+        self.groupingSeparator = " "
+    }
+}
+let formatter = CalculatorFormatter()
