@@ -62,6 +62,7 @@ class ViewController: UIViewController {
     
     @IBAction func clear(sender: UIButton) {
         brain.clearAll()
+        brain.clearVariables()
         formula.text = brain.description
         displayValue = brain.result
         
@@ -87,15 +88,22 @@ class ViewController: UIViewController {
     var savedProgram: CalculatorBrain.PropertyList?
    
     @IBAction func save() {
-        savedProgram = brain.program
+        userIsInTheMiddleOfTyping = false
+        if let value = displayValue{
+            brain.variableValues["M"] = value
+            displayValue = brain.result
+        }
+        //savedProgram = brain.program
     }
     
     
     @IBAction func get() {
-        if savedProgram != nil{
+       /* if savedProgram != nil{
             brain.program = savedProgram!
             displayValue = brain.result
-        }
+        }*/
+        brain.setOperand("M")
+        displayValue = brain.result
     }
     
     

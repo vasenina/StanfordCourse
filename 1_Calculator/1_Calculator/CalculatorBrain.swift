@@ -53,12 +53,28 @@ class CalculatorBrain
         internalProgram.append(operand)
     }
     
+    func setOperand (variable:String){
+        accumulator = variableValues[variable] ?? 0
+        descriptionAccumulator = variable
+        internalProgram.append(variable)
+    }
+    
+    var variableValues = [String : Double](){
+        didSet{
+            program = internalProgram
+        }
+    }
+    
     func clearAll(){
         descriptionAccumulator = "0"
         accumulator = 0.0
         pending = nil
         currentPrecendence = Int.max
         internalProgram.removeAll()
+    }
+    
+    func clearVariables(){
+        variableValues = [:]
     }
     
     
@@ -137,9 +153,16 @@ class CalculatorBrain
                     if let operand  = op as? Double{
                         setOperand(operand)
                     }
-                    else if let operation = op as? String{
-                        performOperation(operation)
+                    else if let symbol = op as? String{
+                        // checking is it variable or operation
+                        if operations[symbol] != nil{
+                            performOperation(symbol)
+                        }
+                        else{
+                            setOperand(symbol)
+                        }
                     }
+                   
                 }
             }
         }
