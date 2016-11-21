@@ -77,6 +77,13 @@ class CalculatorBrain
         variableValues = [:]
     }
     
+    func Undo(){
+        guard !internalProgram.isEmpty else { clearAll(); return}
+        internalProgram.removeLast()
+        program = internalProgram
+        
+    }
+    
     
     private var operations: Dictionary <String, Operation> = [
         "rand" : Operation.NullaruOperation(drand48, "rand()"),

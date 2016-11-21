@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
 
     @IBOutlet private weak var display: UILabel!
     
@@ -80,6 +80,13 @@ class ViewController: UIViewController {
                 display.text = "0"
                 userIsInTheMiddleOfTyping = false
             }
+            
+        }
+        else{
+            brain.Undo()
+            formula.text = brain.description
+            displayValue = brain.result
+            
             
         }
             
