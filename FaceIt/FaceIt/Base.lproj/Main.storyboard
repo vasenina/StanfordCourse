@@ -29,6 +29,9 @@
                             <constraint firstItem="AU1-wW-G5u" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wZA-vo-Uvm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="faceView" destination="AU1-wW-G5u" id="DY4-fK-9Xj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

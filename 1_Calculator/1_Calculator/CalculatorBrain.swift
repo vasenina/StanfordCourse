@@ -70,7 +70,7 @@ class CalculatorBrain
         accumulator = 0.0
         pending = nil
         currentPrecendence = Int.max
-        internalProgram.removeAll()
+        internalProgram.removeAll(keepCapacity: false)
     }
     
     func clearVariables(){
