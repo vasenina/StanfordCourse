@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  FaceIt
 //
@@ -18,6 +18,7 @@ class FaceViewController: UIViewController {
     
     @IBOutlet weak var faceView: FaceView!{
         didSet{
+            faceView.addGestureRecognizer(UIPinchGestureRecognizer(target: faceView, action: "changeScale:"))
             updateUI()
         }
     }
