@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE4033511DF23E7C002F9F1F /* AxesDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4033501DF23E7C002F9F1F /* AxesDrawer.swift */; };
 		CE4770131DD3C7B900B32D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4770121DD3C7B900B32D2A /* AppDelegate.swift */; };
 		CE4770151DD3C7B900B32D2A /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4770141DD3C7B900B32D2A /* CalculatorViewController.swift */; };
 		CE4770181DD3C7B900B32D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4770161DD3C7B900B32D2A /* Main.storyboard */; };
 		CE47701A1DD3C7B900B32D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4770191DD3C7B900B32D2A /* Assets.xcassets */; };
 		CE47701D1DD3C7B900B32D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE47701B1DD3C7B900B32D2A /* LaunchScreen.storyboard */; };
-		CE4770261DD4E8A200B32D2A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4770251DD4E8A200B32D2A /* CalculatorBrain.swift */; settings = {ASSET_TAGS = (); }; };
-		CE935E7C1DF1C5BA00A5CDA8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE935E7B1DF1C5BA00A5CDA8 /* GraphViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		CE935E881DF1E00900A5CDA8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE935E871DF1E00900A5CDA8 /* GraphView.swift */; settings = {ASSET_TAGS = (); }; };
+		CE4770261DD4E8A200B32D2A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4770251DD4E8A200B32D2A /* CalculatorBrain.swift */; };
+		CE935E7C1DF1C5BA00A5CDA8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE935E7B1DF1C5BA00A5CDA8 /* GraphViewController.swift */; };
+		CE935E881DF1E00900A5CDA8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE935E871DF1E00900A5CDA8 /* GraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE4033501DF23E7C002F9F1F /* AxesDrawer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxesDrawer.swift; sourceTree = "<group>"; };
 		CE47700F1DD3C7B900B32D2A /* 1_Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1_Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE4770121DD3C7B900B32D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE4770141DD3C7B900B32D2A /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				CE4770141DD3C7B900B32D2A /* CalculatorViewController.swift */,
 				CE4770161DD3C7B900B32D2A /* Main.storyboard */,
 				CE4770251DD4E8A200B32D2A /* CalculatorBrain.swift */,
+				CE4033501DF23E7C002F9F1F /* AxesDrawer.swift */,
 				CE935E871DF1E00900A5CDA8 /* GraphView.swift */,
 				CE935E7B1DF1C5BA00A5CDA8 /* GraphViewController.swift */,
 				CE4770241DD3C9AF00B32D2A /* Supporting files */,
@@ -107,12 +110,13 @@
 		CE4770071DD3C7B900B32D2A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Vasenina;
 				TargetAttributes = {
 					CE47700E1DD3C7B900B32D2A = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = TSV3HNNDR6;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -157,6 +161,7 @@
 				CE935E7C1DF1C5BA00A5CDA8 /* GraphViewController.swift in Sources */,
 				CE4770151DD3C7B900B32D2A /* CalculatorViewController.swift in Sources */,
 				CE4770131DD3C7B900B32D2A /* AppDelegate.swift in Sources */,
+				CE4033511DF23E7C002F9F1F /* AxesDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,8 +200,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -240,8 +247,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -260,6 +269,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -276,6 +286,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "aninesav.--Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -290,6 +301,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "aninesav.--Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

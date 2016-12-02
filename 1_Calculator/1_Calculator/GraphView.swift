@@ -32,7 +32,7 @@ class GraphView: UIView {
     
     override func drawRect(rect: CGRect) {
         // Drawing code
-        //AxesDrawer(contentScaleFactor: contentScaleFactor).drawAxesInRect(bounds, origin: graphOrigin, pointsPerUnit: scale)
+        AxesDrawer(contentScaleFactor: contentScaleFactor).drawAxesInRect(bounds, origin: graphOrigin, pointsPerUnit: scale)
         
     }
 
