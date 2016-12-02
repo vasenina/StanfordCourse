@@ -8,7 +8,17 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+class CalculatorViewController: UIViewController, UISplitViewControllerDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        splitViewController?.delegate = self
+    }
+    
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool{
+        return true
+    }
+    
 
     @IBOutlet private weak var display: UILabel!
     
@@ -139,6 +149,21 @@ class CalculatorViewController: UIViewController {
             formula.text! += "="
         }
     }
-  
+
+    override func shouldPerformSegueWithIdentifier(idetifier: String, sender: AnyObject?) -> Bool{
+        return !brain.isPartialResult
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var destinationvc = segue.destinationViewController
+        if let navcon = destinationvc as? UINavigationController{
+            destinationvc = navcon.visibleViewController ?? destinationvc
+        }
+        if let graphvc = destinationvc as? GraphViewController{
+            graphvc.navigationItem.title = brain.description
+            
+        }
+    }
+    
 }
 

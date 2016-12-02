@@ -13,6 +13,8 @@
 		CE47701A1DD3C7B900B32D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4770191DD3C7B900B32D2A /* Assets.xcassets */; };
 		CE47701D1DD3C7B900B32D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE47701B1DD3C7B900B32D2A /* LaunchScreen.storyboard */; };
 		CE4770261DD4E8A200B32D2A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4770251DD4E8A200B32D2A /* CalculatorBrain.swift */; settings = {ASSET_TAGS = (); }; };
+		CE935E7C1DF1C5BA00A5CDA8 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE935E7B1DF1C5BA00A5CDA8 /* GraphViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		CE935E881DF1E00900A5CDA8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE935E871DF1E00900A5CDA8 /* GraphView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		CE47701C1DD3C7B900B32D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE47701E1DD3C7B900B32D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE4770251DD4E8A200B32D2A /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
+		CE935E7B1DF1C5BA00A5CDA8 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		CE935E871DF1E00900A5CDA8 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				CE4770141DD3C7B900B32D2A /* CalculatorViewController.swift */,
 				CE4770161DD3C7B900B32D2A /* Main.storyboard */,
 				CE4770251DD4E8A200B32D2A /* CalculatorBrain.swift */,
+				CE935E871DF1E00900A5CDA8 /* GraphView.swift */,
+				CE935E7B1DF1C5BA00A5CDA8 /* GraphViewController.swift */,
 				CE4770241DD3C9AF00B32D2A /* Supporting files */,
 			);
 			path = 1_Calculator;
@@ -146,7 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE935E881DF1E00900A5CDA8 /* GraphView.swift in Sources */,
 				CE4770261DD4E8A200B32D2A /* CalculatorBrain.swift in Sources */,
+				CE935E7C1DF1C5BA00A5CDA8 /* GraphViewController.swift in Sources */,
 				CE4770151DD3C7B900B32D2A /* CalculatorViewController.swift in Sources */,
 				CE4770131DD3C7B900B32D2A /* AppDelegate.swift in Sources */,
 			);
