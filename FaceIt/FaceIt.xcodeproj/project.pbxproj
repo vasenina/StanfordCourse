@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE5DB58C1DF073DA00FB3079 /* EmotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB58B1DF073DA00FB3079 /* EmotionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		CE6F50761DE5EFC10059F51D /* FacialExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F50751DE5EFC10059F51D /* FacialExpression.swift */; settings = {ASSET_TAGS = (); }; };
+		CE5DB58C1DF073DA00FB3079 /* EmotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5DB58B1DF073DA00FB3079 /* EmotionsViewController.swift */; };
+		CE6F50761DE5EFC10059F51D /* FacialExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F50751DE5EFC10059F51D /* FacialExpression.swift */; };
 		CE92035E1DDDD546001EF15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92035D1DDDD546001EF15B /* AppDelegate.swift */; };
 		CE9203601DDDD546001EF15B /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE92035F1DDDD546001EF15B /* FaceViewController.swift */; };
 		CE9203631DDDD546001EF15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9203611DDDD546001EF15B /* Main.storyboard */; };
 		CE9203651DDDD546001EF15B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE9203641DDDD546001EF15B /* Assets.xcassets */; };
 		CE9203681DDDD546001EF15B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9203661DDDD546001EF15B /* LaunchScreen.storyboard */; };
-		CE9203711DDDD66F001EF15B /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9203701DDDD66F001EF15B /* FaceView.swift */; settings = {ASSET_TAGS = (); }; };
+		CE9203711DDDD66F001EF15B /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9203701DDDD66F001EF15B /* FaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +113,7 @@
 					CE9203591DDDD546001EF15B = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = TSV3HNNDR6;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -273,6 +274,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = aninesav.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -284,6 +286,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = aninesav.FaceIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
