@@ -358,6 +358,7 @@
                     <connections>
                         <outlet property="display" destination="AGf-Kq-rDA" id="Cf0-bQ-GOW"/>
                         <outlet property="formula" destination="R3Z-k0-hOj" id="GPh-Q8-jKd"/>
+                        <outlet property="showGraph" destination="U5y-jj-tqU" id="uoB-Bm-KDN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

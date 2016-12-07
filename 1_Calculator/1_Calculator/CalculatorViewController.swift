@@ -26,6 +26,13 @@ class CalculatorViewController: UIViewController, UISplitViewControllerDelegate 
     
     private var userIsInTheMiddleOfTyping=false
     
+    
+    @IBOutlet weak var showGraph: UIButton!{
+        didSet{
+            showGraph.enabled = false
+        }
+    }
+    
     @IBAction private func touchDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTyping {
@@ -96,8 +103,6 @@ class CalculatorViewController: UIViewController, UISplitViewControllerDelegate 
             brain.Undo()
             formula.text = brain.description
             displayValue = brain.result
-            
-            
         }
             
     }
@@ -110,15 +115,10 @@ class CalculatorViewController: UIViewController, UISplitViewControllerDelegate 
             brain.variableValues["M"] = value
             displayValue = brain.result
         }
-        //savedProgram = brain.program
     }
     
-    
+    //get variable from dictionary
     @IBAction func get() {
-       /* if savedProgram != nil{
-            brain.program = savedProgram!
-            displayValue = brain.result
-        }*/
         brain.setOperand("M")
         displayValue = brain.result
     }
@@ -131,16 +131,17 @@ class CalculatorViewController: UIViewController, UISplitViewControllerDelegate 
             if let value = displayValue{
                 brain.setOperand(value)
             }
-            
         }
         
         userIsInTheMiddleOfTyping = false
         if let mathematicalSymbol = sender.currentTitle {
             brain.performOperation(mathematicalSymbol)
         }
-        displayValue = brain.result
         
+        showGraph.enabled = !brain.isPartialResult
+        displayValue = brain.result
         formula.text = brain.description
+        
         if formula.text == " " {return}
         if brain.isPartialResult{
             formula.text! += "..."
