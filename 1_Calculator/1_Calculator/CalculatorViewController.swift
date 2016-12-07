@@ -162,6 +162,11 @@ class CalculatorViewController: UIViewController, UISplitViewControllerDelegate 
         if let graphvc = destinationvc as? GraphViewController{
             graphvc.navigationItem.title = brain.description
             
+            graphvc.yForX = { [weak weakSelf = self] x in
+                weakSelf?.brain.variableValues["M"] = x
+                return weakSelf?.brain.result
+            }
+            
         }
     }
     

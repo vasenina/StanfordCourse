@@ -92,7 +92,7 @@ class CalculatorBrain
         "±" : Operation.UnaryOperation({-$0}, {"-("+$0+")"}),
         "√" : Operation.UnaryOperation(sqrt, {"√("+$0+")"}),
         "cos" : Operation.UnaryOperation(cos, {"cos("+$0+")"}),
-        "sin" : Operation.UnaryOperation(sin, {"cos("+$0+")"}),
+        "sin" : Operation.UnaryOperation(sin, {"sin("+$0+")"}),
         "×" : Operation.BinaryOperation(*, {$0+"×"+$1}, 1 ),
         "÷" : Operation.BinaryOperation(/, {$0+"÷"+$1}, 1),
         "+" : Operation.BinaryOperation(+, {$0+"+"+$1 }, 0),

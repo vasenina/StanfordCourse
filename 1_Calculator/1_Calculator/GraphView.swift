@@ -20,6 +20,9 @@ class GraphView: UIView {
     @IBInspectable
     var color: UIColor = UIColor.blackColor() { didSet{ setNeedsDisplay() } }
     
+    
+    var yForX: ((x:Double)->Double?)? { didSet{ setNeedsDisplay() } }
+    
     private var originSet: CGPoint?  { didSet{ setNeedsDisplay() } }
     
     var graphOrigin: CGPoint {
@@ -62,13 +65,50 @@ class GraphView: UIView {
             graphOrigin = recognizer.locationInView(self)
         }
     }
+    
+    private struct OldPoint{
+        var yGraph: CGFloat
+        var normal: Bool
+    }
 
-
+    func drawGraphinRect(bounds:CGRect, origin: CGPoint, scale: CGFloat){
+        color.set()
+        
+        var xGraph, yGraph: CGFloat
+        var x:Double { return Double ((xGraph-origin.x) / scale)}
+        
+        var oldPoint = OldPoint(yGraph: 0.0, normal: false)
+        var disContinuity: Bool{return abs(yGraph-oldPoint.yGraph)>max(bounds.width, bounds.height) * 1.5}
+        
+        let path = UIBezierPath()
+        path.lineWidth = lineWidth
+        
+        for i in 0...Int(bounds.size.width*contentScaleFactor){
+            xGraph = CGFloat(i) / contentScaleFactor
+            
+            guard let y = (yForX)?(x:x) where y.isFinite else { oldPoint.normal = false; continue }
+            yGraph = origin.y - CGFloat(y)*scale
+            
+            if !oldPoint.normal{
+                path.moveToPoint(CGPoint(x:xGraph, y: yGraph))
+            }
+            else{
+                guard !disContinuity
+                else{
+                    oldPoint = OldPoint(yGraph: yGraph, normal:false)
+                    continue}
+                path.addLineToPoint(CGPoint(x:xGraph, y: yGraph))
+            }
+            oldPoint = OldPoint(yGraph: yGraph, normal: true)
+        }
+        path.stroke()
+        
+    }
     
     override func drawRect(rect: CGRect) {
         // Drawing code
         AxesDrawer(contentScaleFactor: contentScaleFactor).drawAxesInRect(bounds, origin: graphOrigin, pointsPerUnit: scale)
-        
+        drawGraphinRect(bounds, origin: graphOrigin , scale: scale)
     }
 
 }

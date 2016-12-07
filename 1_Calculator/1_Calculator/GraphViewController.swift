@@ -10,6 +10,7 @@ import UIKit
 
 class GraphViewController: UIViewController {
 
+    var yForX:((x:Double)->Double?)? { didSet {updateUI()}}
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +33,7 @@ class GraphViewController: UIViewController {
     }
     
     private func updateUI(){
+        graphView?.yForX = yForX
         //count model here
         
     }
