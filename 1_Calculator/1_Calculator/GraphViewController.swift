@@ -13,7 +13,7 @@ class GraphViewController: UIViewController {
     var yForX:((x:Double)->Double?)? { didSet {updateUI()}}
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateUI()
         // Do any additional setup after loading the view.
     }
 
