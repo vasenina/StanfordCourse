@@ -24,7 +24,6 @@ class GraphView: UIView {
     var yForX: ((x:Double)->Double?)? { didSet{ setNeedsDisplay() } }
     
     private var originSet: CGPoint?  { didSet{ setNeedsDisplay() } }
-    
     var graphOrigin: CGPoint {
         get{
             return originSet ?? convertPoint(center, fromView: superview)
@@ -48,14 +47,31 @@ class GraphView: UIView {
     
     func originMove(recognizer:UIPanGestureRecognizer){
         switch recognizer.state{
-        case .Ended: fallthrough
-        case .Changed,.Ended:
+        case .Began:
+            drawGraph = true
+            snapShot = self.snapshotViewAfterScreenUpdates(false)
+            snapShot!.alpha = 0.5
+            self.addSubview(snapShot!)
+            
+        case .Changed:
             let translation = recognizer.translationInView(self)
             if translation != CGPointZero{
-                graphOrigin.x += translation.x
-                graphOrigin.y += translation.y
+                // screenshot mooving
+                snapShot!.center.x += translation.x
+                snapShot!.center.y += translation.y
+                // OR axes mooving
+                //graphOrigin.x += translation.x
+                //graphOrigin.y += translation.y
                 recognizer.setTranslation(CGPointZero, inView: self)
             }
+
+        case .Ended:
+            graphOrigin.x += snapShot!.frame.origin.x
+            graphOrigin.y += snapShot!.frame.origin.y
+            snapShot!.removeFromSuperview()
+            drawGraph = false
+            setNeedsDisplay()
+            
         default: break
         }
     }
@@ -105,10 +121,15 @@ class GraphView: UIView {
         
     }
     
+    private var drawGraph: Bool = false
+    private var snapShot: UIView?
+    
     override func drawRect(rect: CGRect) {
         // Drawing code
         AxesDrawer(contentScaleFactor: contentScaleFactor).drawAxesInRect(bounds, origin: graphOrigin, pointsPerUnit: scale)
-        drawGraphinRect(bounds, origin: graphOrigin , scale: scale)
+        if !drawGraph{
+            drawGraphinRect(bounds, origin: graphOrigin , scale: scale)
+        }
     }
 
 }
