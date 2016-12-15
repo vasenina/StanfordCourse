@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="reN-S8-Xts" id="fNP-ns-uKS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="YDP-ER-6vt">
@@ -83,7 +83,6 @@
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="WAO-7V-CCs" id="3rz-hG-t2j"/>
-                            <outlet property="delegate" destination="WAO-7V-CCs" id="DHK-1N-BCc"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Nsj-wb-Mj1">

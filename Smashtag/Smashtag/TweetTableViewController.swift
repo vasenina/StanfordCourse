@@ -70,13 +70,14 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+   /* override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "\(tweets.count - section)"
-    }
+    }*/
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return tweets.count
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
