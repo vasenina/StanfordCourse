@@ -12,6 +12,7 @@ import Twitter
 class TweetTableViewCell: UITableViewCell {
     
     
+    
     @IBOutlet weak var tweetProfileImageView: UIImageView!
     @IBOutlet weak var tweetCreatedLabel: UILabel!
     @IBOutlet weak var tweetScreenNameLabel: UILabel!

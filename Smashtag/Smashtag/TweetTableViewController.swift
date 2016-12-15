@@ -29,7 +29,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     private var twitterRequest: Twitter.Request? {
         if lastTwitterRequest == nil {
-            if let query = searchText , !query.isEmpty {
+            if let query = searchText, !query.isEmpty {
                 return Twitter.Request(search: query + " -filter:retweets", count: 100)
             }
         }
@@ -60,6 +60,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //searchText = "#stanford"
         //automatic height
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -75,13 +76,11 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }*/
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return tweets.count
         
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return tweets[section].count
     }
     
@@ -99,6 +98,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     private struct Storyboard{
         static let TweetCellIdentifier = "Tweet"
     }
+
 
   
     @IBOutlet weak var searchTextField: UITextField!
