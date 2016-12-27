@@ -24,6 +24,26 @@ class TweetTableViewCell: UITableViewCell {
         }
     }
     
+    struct Palette{
+        static let hashtagColor  = UIColor.red
+        static let urlColor = UIColor.blue
+        static let userColor = UIColor.purple
+    }
+    
+    private func setTextLabel(_ tweet: Tweet) -> NSMutableAttributedString{
+        var tweetText: String = tweet.text
+        for _ in tweet.media{
+            tweetText += " 📷"
+        }
+        let attribText = NSMutableAttributedString(string: tweetText)
+        
+        attribText.setMensionsColor(tweet.hashtags, color: Palette.hashtagColor)
+        attribText.setMensionsColor(tweet.urls, color: Palette.urlColor)
+        attribText.setMensionsColor(tweet.userMentions, color: Palette.userColor)
+        
+        return attribText
+    }
+    
     private func updateUI()
     {
         // reset any existing tweet information
@@ -35,13 +55,7 @@ class TweetTableViewCell: UITableViewCell {
         // load new information from our tweet (if any)
         if let tweet = self.tweet
         {
-            tweetTextLabel?.text = tweet.text
-            if tweetTextLabel?.text != nil  {
-                for _ in tweet.media {
-                    tweetTextLabel.text! += " 📷"
-                }
-            }
-            
+            tweetTextLabel?.attributedText = setTextLabel(tweet)    
             tweetScreenNameLabel?.text = "\(tweet.user)" // tweet.user.description
             
             if let profileImageURL = tweet.user.profileImageURL {
@@ -59,5 +73,13 @@ class TweetTableViewCell: UITableViewCell {
             tweetCreatedLabel?.text = formatter.string(from: tweet.created)
         }
         
+    }
+}
+
+private extension NSMutableAttributedString {
+    func setMensionsColor(_ mensions: [Mention], color: UIColor) {
+        for mension in mensions {
+            addAttribute(NSForegroundColorAttributeName, value: color, range: mension.nsrange)
+        }
     }
 }
