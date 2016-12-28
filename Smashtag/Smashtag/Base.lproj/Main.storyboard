@@ -79,7 +79,7 @@
                                     <outlet property="tweetProfileImageView" destination="1oR-wy-izl" id="H3c-rO-Bbn"/>
                                     <outlet property="tweetScreenNameLabel" destination="yfb-Yf-aeh" id="DDn-Tl-PVq"/>
                                     <outlet property="tweetTextLabel" destination="3D5-lG-V5T" id="ZKs-C3-YdZ"/>
-                                    <segue destination="vGh-uP-yif" kind="showDetail" identifier="Show Mentions" id="24b-uF-Hue"/>
+                                    <segue destination="vGh-uP-yif" kind="show" identifier="Show Mentions" id="Znx-QG-T8X"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,7 +106,7 @@
             </objects>
             <point key="canvasLocation" x="1900" y="25.637181409295355"/>
         </scene>
-        <!--Mensions-->
+        <!--Mentions-->
         <scene sceneID="2UR-Nf-OY3">
             <objects>
                 <tableViewController id="vGh-uP-yif" customClass="MentionsTableViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,11 +119,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pga-O0-Zb9" id="Nu1-QS-t01">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bft-4X-dFJ">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -136,7 +136,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="278"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6HU-49-5OL" id="yRU-TV-Uxt">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="278"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8l-wL-Hdr">
@@ -166,7 +166,7 @@
                             <outlet property="delegate" destination="vGh-uP-yif" id="bav-hM-JsW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Mensions" id="WAL-GF-cs4">
+                    <navigationItem key="navigationItem" title="Mentions" id="WAL-GF-cs4">
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Ow0-Dq-UE9">
                             <connections>
                                 <action selector="toRootViewController:" destination="vGh-uP-yif" id="Axq-7g-BZw"/>
@@ -176,7 +176,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZFv-Ad-7v6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2681" y="26"/>
+            <point key="canvasLocation" x="2866" y="26"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dse-xs-Gsf">
