@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		836A432E1E140E3C002CC82A /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A432D1E140E3C002CC82A /* ImageTableViewCell.swift */; };
+		836A43301E140E8C002CC82A /* MentionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836A432F1E140E8C002CC82A /* MentionsTableViewController.swift */; };
 		CE5FBE121E005D0800E2163C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5FBE111E005D0800E2163C /* AppDelegate.swift */; };
 		CE5FBE171E005D0900E2163C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5FBE151E005D0900E2163C /* Main.storyboard */; };
 		CE5FBE191E005D0900E2163C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5FBE181E005D0900E2163C /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		836A432D1E140E3C002CC82A /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		836A432F1E140E8C002CC82A /* MentionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsTableViewController.swift; sourceTree = "<group>"; };
 		CE5FBE0E1E005D0800E2163C /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5FBE111E005D0800E2163C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5FBE161E005D0900E2163C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			children = (
 				CE5FBE231E005D7100E2163C /* Supporting Files */,
 				CE5FBE151E005D0900E2163C /* Main.storyboard */,
+				836A432F1E140E8C002CC82A /* MentionsTableViewController.swift */,
+				836A432D1E140E3C002CC82A /* ImageTableViewCell.swift */,
 				CE5FBE241E005DEB00E2163C /* TweetTableViewController.swift */,
 				CE770C461E00995800FD01F7 /* TweetTableViewCell.swift */,
 			);
@@ -169,8 +175,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5FBE121E005D0800E2163C /* AppDelegate.swift in Sources */,
+				836A432E1E140E3C002CC82A /* ImageTableViewCell.swift in Sources */,
 				CE5FBE251E005DEB00E2163C /* TweetTableViewController.swift in Sources */,
 				CE770C471E00995800FD01F7 /* TweetTableViewCell.swift in Sources */,
+				836A43301E140E8C002CC82A /* MentionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

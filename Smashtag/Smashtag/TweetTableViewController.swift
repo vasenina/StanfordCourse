@@ -18,6 +18,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     }
     
     
+    
     var searchText: String?{
         didSet{
             tweets.removeAll()
@@ -117,14 +118,22 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
 
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if let identifier = segue.identifier {
+            if identifier == "Show Mentions",
+                let mtvc = segue.destination as? MentionsTableViewController,
+                let tweetCell = sender as? TweetTableViewCell {
+                mtvc.tweet = tweetCell.tweet}
+        }
     }
-    */
+    
 
 }
+
+
+
