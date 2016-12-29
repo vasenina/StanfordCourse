@@ -20,6 +20,7 @@
 		CE770C471E00995800FD01F7 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE770C461E00995800FD01F7 /* TweetTableViewCell.swift */; };
 		CE770C4A1E00A49A00FD01F7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE770C491E00A49A00FD01F7 /* Twitter.framework */; };
 		CE770C4B1E00A49A00FD01F7 /* Twitter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE770C491E00A49A00FD01F7 /* Twitter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CEAFAF951E15C04A0040DCF0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFAF941E15C04A0040DCF0 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,7 @@
 		CE5FBE241E005DEB00E2163C /* TweetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewController.swift; sourceTree = "<group>"; };
 		CE770C461E00995800FD01F7 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		CE770C491E00A49A00FD01F7 /* Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAFAF941E15C04A0040DCF0 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				CE5FBE231E005D7100E2163C /* Supporting Files */,
 				CE5FBE151E005D0900E2163C /* Main.storyboard */,
+				CEAFAF941E15C04A0040DCF0 /* WebViewController.swift */,
 				836A432F1E140E8C002CC82A /* MentionsTableViewController.swift */,
 				836A432D1E140E3C002CC82A /* ImageTableViewCell.swift */,
 				839E76B21E155885008DBF94 /* RecentTableViewController.swift */,
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5FBE121E005D0800E2163C /* AppDelegate.swift in Sources */,
+				CEAFAF951E15C04A0040DCF0 /* WebViewController.swift in Sources */,
 				836A432E1E140E3C002CC82A /* ImageTableViewCell.swift in Sources */,
 				839E76B31E155885008DBF94 /* RecentTableViewController.swift in Sources */,
 				CE5FBE251E005DEB00E2163C /* TweetTableViewController.swift in Sources */,

@@ -24,6 +24,7 @@ class MentionsTableViewController: UITableViewController {
         
         static let KeywordSegue = "From Keyword"
         static let ImageSegue = "Show Image"
+        static let WebViewSegue = "Show Url"
         
     }
     
@@ -170,12 +171,14 @@ class MentionsTableViewController: UITableViewController {
         if identifier == Storyboard.KeywordSegue{
             if let cell = sender as? UITableViewCell,
                 let indexPath =  tableView.indexPath(for: cell), mentionSections[indexPath.section].type == "URLs" {
-                if let urlString = cell.textLabel?.text,
+                /*if let urlString = cell.textLabel?.text,
                      let url = NSURL(string:urlString) {
                             let safariVC = SFSafariViewController(url: url as URL)
                             present(safariVC, animated: true, completion: nil)
+                 }*/
+                        performSegue(withIdentifier: Storyboard.WebViewSegue, sender: sender)
                     
-                }
+                
                 return false
             }
             
