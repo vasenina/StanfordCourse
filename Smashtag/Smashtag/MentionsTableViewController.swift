@@ -87,12 +87,6 @@ class MentionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,12 +97,10 @@ class MentionsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return mentionSections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return mentionSections[section].mentions.count
     }
 
@@ -157,7 +149,8 @@ class MentionsTableViewController: UITableViewController {
             {
                 if let ttvc = segue.destination as? TweetTableViewController,
                 let cell = sender as? UITableViewCell,
-                let text = cell.textLabel?.text{
+                var text = cell.textLabel?.text{
+                    if text.hasPrefix("@"){ text += " OR from: " + text} //extra Credit 2
                 ttvc.searchText = text
                 }
             }

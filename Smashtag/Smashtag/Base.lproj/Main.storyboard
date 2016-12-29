@@ -267,7 +267,13 @@
                             <constraint firstItem="dTn-BI-bVy" firstAttribute="bottom" secondItem="GR3-hX-9Ef" secondAttribute="top" id="sjl-eG-9y1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Xu1-zH-F7C"/>
+                    <navigationItem key="navigationItem" id="Xu1-zH-F7C">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="KJB-lW-TqL">
+                            <connections>
+                                <action selector="toRootViewController:" destination="hxz-ZW-MX6" id="lGm-FX-7PX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="dTn-BI-bVy" id="UHU-2w-8f1"/>
                         <outlet property="spinner" destination="NEN-6A-vYK" id="PRQ-On-F8G"/>

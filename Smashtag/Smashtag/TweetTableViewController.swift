@@ -68,8 +68,40 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         tableView.rowHeight = UITableViewAutomaticDimension
      
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //-------- Stop Button -----
+        
+       /* let imageButton = UIBarButtonItem(barButtonSystemItem: .camera,
+                                          target: self,
+                                          action: #selector(TweetTableViewController.showImages(_:)))
+        navigationItem.rightBarButtonItems = [imageButton]*/
+        if let navCon = navigationController, navCon.viewControllers.count > 1 {
+            
+            let stopBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop,
+                                                    target: self,
+                                                    action: #selector(TweetTableViewController.toRootViewController(_:)))
+            
+            if let rightBarButtonItem = navigationItem.rightBarButtonItem {
+                navigationItem.rightBarButtonItems = [stopBarButtonItem, rightBarButtonItem]
+            } else {
+                navigationItem.rightBarButtonItem = stopBarButtonItem
+            }
+            
+        }
+    }
+    
+    func toRootViewController(_ sender: UIBarButtonItem) {
+        _ = navigationController?.popToRootViewController(animated: true)
+    }
+    
+    /*func showImages(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Storyboard.ImagesIdentifier, sender: sender)
+    }*/
+    
 
-   
 
     // MARK: - Table view data source
     

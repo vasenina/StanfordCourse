@@ -44,6 +44,10 @@ class ImageViewController: UIViewController , UIScrollViewDelegate{
         }
     }
     
+    @IBAction func toRootViewController(_ sender: UIBarButtonItem) {
+        _ = navigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBOutlet weak var spinner: UIActivityIndicatorView!
   
     @IBOutlet weak var scrollView: UIScrollView!{
