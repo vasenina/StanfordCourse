@@ -8,6 +8,7 @@
 
 import UIKit
 import Twitter
+import SafariServices
 
 
 class MentionsTableViewController: UITableViewController {
@@ -15,6 +16,15 @@ class MentionsTableViewController: UITableViewController {
  
     @IBAction func toRootViewController(_ sender: UIBarButtonItem) {
         _ = navigationController?.popToRootViewController(animated: true)
+    }
+    
+    private struct Storyboard{
+        static let KeywordCell = "Keyword Cell"
+        static let ImageCell = "Image Cell"
+        
+        static let KeywordSegue = "From Keyword"
+        static let ImageSegue = "Show Image"
+        
     }
     
     var tweet: Tweet?{
@@ -108,13 +118,13 @@ class MentionsTableViewController: UITableViewController {
         
         switch mention {
         case .keyword(let keyword):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Keyword Cell",
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.KeywordCell,
                                                      for: indexPath)
             cell.textLabel?.text = keyword
             return cell
             
         case .image(let url, _):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Image Cell",
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.ImageCell,
                                                      for: indexPath)
             if let imageCell = cell as? ImageTableViewCell {
                 imageCell.imageUrl = url
@@ -140,6 +150,43 @@ class MentionsTableViewController: UITableViewController {
                             titleForHeaderInSection section: Int) -> String? {
         return mentionSections[section].type
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier{
+            if identifier == Storyboard.KeywordSegue
+            {
+                if let ttvc = segue.destination as? TweetTableViewController,
+                let cell = sender as? UITableViewCell,
+                let text = cell.textLabel?.text{
+                ttvc.searchText = text
+                }
+            }
+            else if identifier == Storyboard.ImageSegue{
+                if let ivc = segue.destination as? ImageViewController,
+                    let cell = sender as? ImageTableViewCell{
+                        ivc.imageURL = cell.imageUrl
+                        ivc.title = title
+                }
+            }
+            
+            
+        }
+    }
    
-   
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == Storyboard.KeywordSegue{
+            if let cell = sender as? UITableViewCell,
+                let indexPath =  tableView.indexPath(for: cell), mentionSections[indexPath.section].type == "URLs" {
+                if let urlString = cell.textLabel?.text,
+                     let url = NSURL(string:urlString) {
+                            let safariVC = SFSafariViewController(url: url as URL)
+                            present(safariVC, animated: true, completion: nil)
+                    
+                }
+                return false
+            }
+            
+        }
+        return true
+    }
 }

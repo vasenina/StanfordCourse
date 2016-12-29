@@ -25,6 +25,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             lastTwitterRequest = nil
             searchForTweets()
             title = searchText
+            RecentSearches.add(searchText!)
         }
     }
     
