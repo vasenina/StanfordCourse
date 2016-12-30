@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vfF-pd-LcR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vfF-pd-LcR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -252,7 +252,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTn-BI-bVy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </scrollView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NEN-6A-vYK">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NEN-6A-vYK">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
@@ -283,7 +283,7 @@
             </objects>
             <point key="canvasLocation" x="5628" y="7.6461769115442282"/>
         </scene>
-        <!--Web View Controller-->
+        <!--WebView-->
         <scene sceneID="oL5-r8-fpc">
             <objects>
                 <viewController id="fdK-pB-5EZ" customClass="WebViewController" customModule="Smashtag" customModuleProvider="target" sceneMemberID="viewController">
@@ -296,25 +296,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgR-oL-GRR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JSf-uC-NTm">
+                                <rect key="frame" x="169" y="323" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hgR-oL-GRR" firstAttribute="top" secondItem="jDe-me-5Ug" secondAttribute="top" id="Fdj-HC-ODy"/>
-                            <constraint firstAttribute="trailing" secondItem="hgR-oL-GRR" secondAttribute="trailing" id="TzR-An-Amd"/>
-                            <constraint firstItem="hgR-oL-GRR" firstAttribute="leading" secondItem="jDe-me-5Ug" secondAttribute="leading" id="ara-uK-xmj"/>
-                            <constraint firstItem="hgR-oL-GRR" firstAttribute="bottom" secondItem="mmP-sT-V6c" secondAttribute="top" id="shi-q7-luQ"/>
+                            <constraint firstItem="hgR-oL-GRR" firstAttribute="leading" secondItem="jDe-me-5Ug" secondAttribute="leading" id="Mp7-w9-Mey"/>
+                            <constraint firstItem="JSf-uC-NTm" firstAttribute="centerX" secondItem="hgR-oL-GRR" secondAttribute="centerX" id="Qlz-Ui-E9b"/>
+                            <constraint firstItem="JSf-uC-NTm" firstAttribute="centerY" secondItem="hgR-oL-GRR" secondAttribute="centerY" id="aL6-Ax-vXG"/>
+                            <constraint firstItem="hgR-oL-GRR" firstAttribute="bottom" secondItem="mmP-sT-V6c" secondAttribute="top" id="pqH-kg-mxW"/>
+                            <constraint firstItem="hgR-oL-GRR" firstAttribute="top" secondItem="AU8-NI-zaA" secondAttribute="bottom" id="r4L-zN-92u"/>
+                            <constraint firstAttribute="trailing" secondItem="hgR-oL-GRR" secondAttribute="trailing" id="yrN-qG-rHk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="WebView" id="CK9-sj-PSi">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="5Dg-UW-izp">
+                            <connections>
+                                <action selector="toRootViewController:" destination="fdK-pB-5EZ" id="9PB-FB-Fir"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="spinner" destination="JSf-uC-NTm" id="H1T-3r-BbT"/>
                         <outlet property="webView" destination="hgR-oL-GRR" id="PZ4-Ns-GyF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8V8-Xb-boW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5538" y="796"/>
+            <point key="canvasLocation" x="5536.8000000000002" y="795.6521739130435"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4cm-WG-KIv">

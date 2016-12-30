@@ -13,6 +13,7 @@ class WebViewController: UIViewController , UIWebViewDelegate{
     var webUrl : URL?
     
    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var webView: UIWebView!{
         didSet{
@@ -24,6 +25,9 @@ class WebViewController: UIViewController , UIWebViewDelegate{
             }
         
         }
+    }
+    @IBAction func toRootViewController(_ sender: UIBarButtonItem) {
+         _ = navigationController?.popToRootViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -47,5 +51,22 @@ class WebViewController: UIViewController , UIWebViewDelegate{
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - UIWebViewDelegate
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        spinner.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        spinner.stopAnimating()
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        spinner.stopAnimating()
+        print("This page can't be downloaded!")
+    }
 
 }

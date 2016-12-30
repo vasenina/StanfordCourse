@@ -162,6 +162,15 @@ class MentionsTableViewController: UITableViewController {
                         ivc.title = title
                 }
             }
+            else if identifier == Storyboard.WebViewSegue{
+                if let wvc = segue.destination as? WebViewController,
+                 let cell = sender as? UITableViewCell{
+                    if let url = cell.textLabel?.text {
+                        wvc.webUrl = URL(string: url)
+                    }
+                }
+                
+            }
             
             
         }
