@@ -8,16 +8,19 @@
 
 import UIKit
 import Twitter
+import CoreData
 
 class TweetTableViewController: UITableViewController, UITextFieldDelegate {
 
+    //var container : NSPersistentContainer? = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    //var context = container.NSManagedObjectContext
+    var context:NSManagedObjectContext? = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
+    
     var tweets = [Array<Tweet>](){
         didSet {
             tableView.reloadData()
         }
     }
-    
-    
     
     var searchText: String?{
         didSet{
@@ -48,6 +51,7 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                     if request == weakSelf?.lastTwitterRequest {
                         if !newTweets.isEmpty {
                             weakSelf?.tweets.insert(newTweets, at: 0)
+                            weakSelf?.updateDatabase(newTweets, searchTerm: (weakSelf?.searchText)!)
                         }
                     }
                     weakSelf?.refreshControl?.endRefreshing()
@@ -59,6 +63,42 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    private func updateDatabase(_ newTweets: [Tweet], searchTerm: String){
+        context?.perform {
+            // более эффективный способ
+            
+             /* TweetM.newTweetsWithTwitterInfo(newTweets,
+                                            andSearchTerm: self.searchText!,
+                                            inManagedObjectContext: self.context!)
+            
+            */
+            for twitterInfo in newTweets {
+             _ = TweetM.tweetWithTwitterInfo(twitterInfo, andSearchTerm: self.searchText!, inManagedObjectContext: self.context!)
+             }
+            
+        }
+        do {
+            try self.context?.save()
+        } catch let error {
+            print("Core Data Error: \(error)")
+        }
+        printDatabaseStatictic()
+        print ("statistic Completed")
+        
+    }
+    
+    private func printDatabaseStatictic(){
+         context?.perform {
+            if let results = try? self.context?.fetch(NSFetchRequest(entityName: "TweetM")){
+                print ("\(results?.count) tweets")
+            }
+            //more efficient wayto count objects..
+            if let mensionCount = try? self.context?.count(for: NSFetchRequest(entityName: "Mension")){
+                print ("\(mensionCount) mensions")
+            }
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
