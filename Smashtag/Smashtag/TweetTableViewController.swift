@@ -75,13 +75,13 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
             for twitterInfo in newTweets {
              _ = TweetM.tweetWithTwitterInfo(twitterInfo, andSearchTerm: self.searchText!, inManagedObjectContext: self.context!)
              }
-            
+            do {
+                try self.context?.save()
+            } catch let error {
+                print("Core Data Error: \(error)")
+            }
         }
-        do {
-            try self.context?.save()
-        } catch let error {
-            print("Core Data Error: \(error)")
-        }
+        
         printDatabaseStatictic()
         print ("statistic Completed")
         
@@ -89,11 +89,11 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
     
     private func printDatabaseStatictic(){
          context?.perform {
-            if let results = try? self.context?.fetch(NSFetchRequest(entityName: "TweetM")){
-                print ("\(results?.count) tweets")
+            if let results = try? self.context!.fetch(NSFetchRequest(entityName: "TweetM")){
+                print ("\(results.count) tweets")
             }
             //more efficient wayto count objects..
-            if let mensionCount = try? self.context?.count(for: NSFetchRequest(entityName: "Mension")){
+            if let mensionCount = try? self.context!.count(for: NSFetchRequest(entityName: "Mension")){
                 print ("\(mensionCount) mensions")
             }
             
@@ -203,6 +203,8 @@ class TweetTableViewController: UITableViewController, UITextFieldDelegate {
                 let tweetCell = sender as? TweetTableViewCell {
                 mtvc.tweet = tweetCell.tweet}
         }
+        
+        
     }
     
 

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class RecentTableViewController: UITableViewController {
+    
     
     var recentSearches:[String]{
         return RecentSearches.searches
@@ -25,7 +27,8 @@ class RecentTableViewController: UITableViewController {
         static let PopularSegue = "ShowPopularMensions"
     }
     
-
+    var context: NSManagedObjectContext?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -102,15 +105,23 @@ class RecentTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier,
-            identifier == Storyboard.TweetsSegue,
+        if let identifier = segue.identifier{
+            if identifier == Storyboard.TweetsSegue,
             let cell = sender as? UITableViewCell,
             let ttvc = segue.destination as? TweetTableViewController{
                 ttvc.searchText = cell.textLabel?.text
             }
+            if identifier == Storyboard.PopularSegue,
+            let cell = sender as? UITableViewCell,
+            let ptwc = segue.destination as? PopularityTableViewController{
+                ptwc.mention = cell.textLabel?.text
+                ptwc.popcontext = context
+            }
+        
             
         }
-        
+    }
+    
         
 
     }

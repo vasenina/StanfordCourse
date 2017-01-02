@@ -53,56 +53,13 @@ class func tweetWithTwitterInfo(_ twitterInfo: Twitter.Tweet,
             terms.add(currentTerm)
             
             // add mensions
-            Mension.mensionsWithTwitterInfo(twitterInfo,
-                                            andSearchTerm: term,
-                                            inManagedObjectContext: context)
+            Mension.mensionsWithTwitterInfo(twitterInfo, andSearchTerm: term, inManagedObjectContext: context)
+            
         }
     }
     
     return nil
 }
-
-
-    class func newTweetsWithTwitterInfo(_ twitterInfo: [Twitter.Tweet],
-                                        andSearchTerm term: String,
-                                        inManagedObjectContext context: NSManagedObjectContext)
-    {
-        let request = NSFetchRequest<TweetM>(entityName: "TweetM")
-        
-        let newTweetsId = twitterInfo.map {$0.id}
-        var newsSet = Set (newTweetsId)
-        
-        request.predicate = NSPredicate(
-            format: "any terms.term contains[c] %@ and unique IN %@", term, newsSet)
-        
-        let results = try? context.fetch(request)
-        if let tweets =  results  {
-            let uniques = tweets.flatMap({ $0.unique})
-            let uniquesSet = Set (uniques)
-            
-            newsSet.subtract(uniquesSet)
-            print ("Count of new elements \(newsSet.count)")
-            
-            for unic in newsSet {
-                if let index = twitterInfo.index(where: {$0.id == unic}){
-                    // получаем твит, получаем терм и добавляем терм в terms для этого твита
-                    
-                    if let tweetM = TweetM.tweetWithTwitterInfo(twitterInfo: twitterInfo[index],
-                                                                inManagedObjectContext: context),
-                        let currentTerm = SearchTerm.termWithTerm(term,
-                                                                  inManagedObjectContext: context){
-                        let terms = tweetM.mutableSetValue(forKey: "terms")
-                        terms.add(currentTerm)
-                        
-                        // add mensions
-                        Mension.mensionsWithTwitterInfo(twitterInfo[index],
-                                                        andSearchTerm: term,
-                                                        inManagedObjectContext: context)
-                    }
-                }
-            }
-        }
-    }
 
 
 
