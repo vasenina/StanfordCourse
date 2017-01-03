@@ -5,6 +5,7 @@
         <attribute name="keyword" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="term" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SearchTerm" inverseName="mensions" inverseEntity="SearchTerm" syncable="YES"/>
+        <relationship name="tweetMs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TweetM" inverseName="mensionsTweetM" inverseEntity="TweetM" syncable="YES"/>
     </entity>
     <entity name="SearchTerm" representedClassName="SearchTerm" syncable="YES">
         <attribute name="term" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,11 +16,12 @@
         <attribute name="posted" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mensionsTweetM" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mension" inverseName="tweetMs" inverseEntity="Mension" syncable="YES"/>
         <relationship name="terms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SearchTerm" inverseName="tweets" inverseEntity="SearchTerm" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Mension" positionX="97" positionY="161" width="128" height="118"/>
         <element name="SearchTerm" positionX="-171" positionY="-72" width="128" height="88"/>
-        <element name="Mension" positionX="72" positionY="63" width="128" height="103"/>
-        <element name="TweetM" positionX="-198" positionY="90" width="128" height="103"/>
+        <element name="TweetM" positionX="-198" positionY="90" width="128" height="118"/>
     </elements>
 </model>

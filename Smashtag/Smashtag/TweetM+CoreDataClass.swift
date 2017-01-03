@@ -53,7 +53,7 @@ class func tweetWithTwitterInfo(_ twitterInfo: Twitter.Tweet,
             terms.add(currentTerm)
             
             // add mensions
-            Mension.mensionsWithTwitterInfo(twitterInfo, andSearchTerm: term, inManagedObjectContext: context)
+            Mension.mensionsWithTwitterInfo(twitterInfo,andTweetM: tweetM, andSearchTerm: term, inManagedObjectContext: context)
             
         }
     }
@@ -61,6 +61,35 @@ class func tweetWithTwitterInfo(_ twitterInfo: Twitter.Tweet,
     return nil
 }
 
+//removing old tweets
+    
+    private struct Constants{
+        static let TimeToRemoveOldTweets  = -60*60*24*7 // 1 week
+    }
+    
+    class func removeOldTweets(context: NSManagedObjectContext){
+        let request = NSFetchRequest<TweetM>(entityName: "TweetM")
+        let weekAgo = Date(timeIntervalSinceNow: TimeInterval(Constants.TimeToRemoveOldTweets))
+        request.predicate = NSPredicate(format: "posted < %@", weekAgo as CVarArg)
+        
+        let results = try? context.fetch(request)
+        if let tweetMs = results {
+            for tweetM in tweetMs{
+                context.delete(tweetM)
+            }
+        }
+    }
+    
+    override public func prepareForDeletion() {
+        guard let mensionsM = mensionsTweetM as? Set<Mension> else { return }
+        
+        for mension in mensionsM  {
+            mension.count = mension.count! - 1
+            if mension.count == 0 {
+                managedObjectContext?.delete(mension)
+            }
+        }
+    }
 
 
 }
