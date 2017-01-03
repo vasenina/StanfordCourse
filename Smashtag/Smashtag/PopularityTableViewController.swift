@@ -52,6 +52,15 @@ class PopularityTableViewController:  CoreDataTableViewController {
    
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if popcontext == nil {
+            popcontext = (UIApplication.shared.delegate as? AppDelegate)?.managedObjectContext
+
+            }
+        }
+    
+    
     // MARK: UITableViewDataSource
     
     
@@ -67,7 +76,7 @@ class PopularityTableViewController:  CoreDataTableViewController {
                 count =  String(mensionM.count)
             }
             cell.textLabel?.text = keyword
-            cell.detailTextLabel?.text = "tweets.count: " + (count ?? "-")
+            cell.detailTextLabel?.text = "tweets: " + (count ?? "-")
         }
         return cell
     }
