@@ -84,7 +84,7 @@ class func tweetWithTwitterInfo(_ twitterInfo: Twitter.Tweet,
         guard let mensionsM = mensionsTweetM as? Set<Mension> else { return }
         
         for mension in mensionsM  {
-            mension.count = mension.count! - 1
+            mension.count = mension.count - 1
             if mension.count == 0 {
                 managedObjectContext?.delete(mension)
             }

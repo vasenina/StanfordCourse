@@ -2,7 +2,7 @@
 //  TweetM+CoreDataProperties.swift
 //  Smashtag
 //
-//  Created by Yulia Vasenina on 02/01/2017.
+//  Created by Yulia Vasenina on 03/01/2017.
 //  Copyright © 2017 Vasenina. All rights reserved.
 //
 
@@ -20,6 +20,7 @@ extension TweetM {
     @NSManaged public var text: String?
     @NSManaged public var unique: String?
     @NSManaged public var terms: NSSet?
+    @NSManaged public var mensionsTweetM: NSSet?
 
 }
 
@@ -37,5 +38,22 @@ extension TweetM {
 
     @objc(removeTerms:)
     @NSManaged public func removeFromTerms(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for mensionsTweetM
+extension TweetM {
+
+    @objc(addMensionsTweetMObject:)
+    @NSManaged public func addToMensionsTweetM(_ value: Mension)
+
+    @objc(removeMensionsTweetMObject:)
+    @NSManaged public func removeFromMensionsTweetM(_ value: Mension)
+
+    @objc(addMensionsTweetM:)
+    @NSManaged public func addToMensionsTweetM(_ values: NSSet)
+
+    @objc(removeMensionsTweetM:)
+    @NSManaged public func removeFromMensionsTweetM(_ values: NSSet)
 
 }
