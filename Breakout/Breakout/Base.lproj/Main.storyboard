@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,25 +64,27 @@
                                 <rect key="frame" x="0.0" y="83" width="375" height="584"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I3-1Y-JXG">
-                                <rect key="frame" x="315" y="37" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pause"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFp-TM-Tbj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFp-TM-Tbj">
                                 <rect key="frame" x="16" y="42" width="43" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9I3-1Y-JXG">
+                                <rect key="frame" x="317" y="37" width="42" height="30"/>
+                                <state key="normal" title="Pause"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ACm-jv-v4U" firstAttribute="leading" secondItem="C46-pR-pb9" secondAttribute="leading" id="958-qN-vQG"/>
-                            <constraint firstAttribute="trailing" secondItem="ACm-jv-v4U" secondAttribute="trailing" id="BKz-Ja-m92"/>
-                            <constraint firstItem="ACm-jv-v4U" firstAttribute="bottom" secondItem="Sqi-Y9-hqC" secondAttribute="top" id="TuI-6e-PAt"/>
-                            <constraint firstItem="ACm-jv-v4U" firstAttribute="top" secondItem="pum-oA-hbS" secondAttribute="bottom" constant="63" id="pSg-Q9-Y8h"/>
+                            <constraint firstItem="ACm-jv-v4U" firstAttribute="bottom" secondItem="Sqi-Y9-hqC" secondAttribute="top" id="8EN-NI-Pmy"/>
+                            <constraint firstItem="jFp-TM-Tbj" firstAttribute="leading" secondItem="C46-pR-pb9" secondAttribute="leadingMargin" id="Qfg-Qk-5my"/>
+                            <constraint firstItem="jFp-TM-Tbj" firstAttribute="centerY" secondItem="9I3-1Y-JXG" secondAttribute="centerY" id="RtU-NZ-4sA"/>
+                            <constraint firstItem="9I3-1Y-JXG" firstAttribute="top" secondItem="pum-oA-hbS" secondAttribute="bottom" constant="17" id="XHV-OS-40M"/>
+                            <constraint firstItem="ACm-jv-v4U" firstAttribute="leading" secondItem="C46-pR-pb9" secondAttribute="leading" id="YWh-M0-JyA"/>
+                            <constraint firstItem="9I3-1Y-JXG" firstAttribute="trailing" secondItem="C46-pR-pb9" secondAttribute="trailingMargin" id="d2g-xg-Vy0"/>
+                            <constraint firstAttribute="trailing" secondItem="ACm-jv-v4U" secondAttribute="trailing" id="qYy-43-ste"/>
+                            <constraint firstItem="ACm-jv-v4U" firstAttribute="top" secondItem="9I3-1Y-JXG" secondAttribute="bottom" constant="16" id="ydx-QH-beh"/>
                         </constraints>
                     </view>
                     <connections>

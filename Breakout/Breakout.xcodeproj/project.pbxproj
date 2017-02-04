@@ -17,6 +17,8 @@
 		836728921E1EB5BC00581E9A /* BrickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836728911E1EB5BC00581E9A /* BrickView.swift */; };
 		836728941E1EB9D100581E9A /* GamePlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836728931E1EB9D100581E9A /* GamePlayView.swift */; };
 		836728961E1EBCE500581E9A /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836728951E1EBCE500581E9A /* Levels.swift */; };
+		8382CCAE1E46266100C46C99 /* PaddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382CCAD1E46266100C46C99 /* PaddleView.swift */; };
+		8382CCB01E462DB100C46C99 /* BreakoutBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382CCAF1E462DB100C46C99 /* BreakoutBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		836728911E1EB5BC00581E9A /* BrickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrickView.swift; sourceTree = "<group>"; };
 		836728931E1EB9D100581E9A /* GamePlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayView.swift; sourceTree = "<group>"; };
 		836728951E1EBCE500581E9A /* Levels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		8382CCAD1E46266100C46C99 /* PaddleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddleView.swift; sourceTree = "<group>"; };
+		8382CCAF1E462DB100C46C99 /* BreakoutBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakoutBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +68,14 @@
 		836728771E1EA79C00581E9A /* Breakout */ = {
 			isa = PBXGroup;
 			children = (
+				8382CCAF1E462DB100C46C99 /* BreakoutBehavior.swift */,
 				8367288B1E1EA85300581E9A /* HomeViewController.swift */,
 				8367288D1E1EA87000581E9A /* BreakoutGameViewController.swift */,
 				8367288F1E1EA88C00581E9A /* SettingsViewController.swift */,
 				8367288A1E1EA7FE00581E9A /* Supporting Files */,
 				8367287C1E1EA79C00581E9A /* Main.storyboard */,
 				836728911E1EB5BC00581E9A /* BrickView.swift */,
+				8382CCAD1E46266100C46C99 /* PaddleView.swift */,
 				836728931E1EB9D100581E9A /* GamePlayView.swift */,
 				836728951E1EBCE500581E9A /* Levels.swift */,
 			);
@@ -160,6 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8382CCB01E462DB100C46C99 /* BreakoutBehavior.swift in Sources */,
+				8382CCAE1E46266100C46C99 /* PaddleView.swift in Sources */,
 				8367288E1E1EA87000581E9A /* BreakoutGameViewController.swift in Sources */,
 				836728961E1EBCE500581E9A /* Levels.swift in Sources */,
 				836728791E1EA79C00581E9A /* AppDelegate.swift in Sources */,
@@ -330,6 +338,7 @@
 				836728891E1EA79C00581E9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

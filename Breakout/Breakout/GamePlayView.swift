@@ -15,10 +15,23 @@ class GamePlayView: UIView {
         static let brickSpacing: CGFloat = 5.0
         static let bricksTopSpacing: CGFloat = 20.0
         static let brickSideSpacing: CGFloat = 10.0
+        static let paddleBoundaryId = "paddleBoundary"
+        static let PaddleBottomMargin: CGFloat = 30.0
     }
+    
+    var behavior = BreakoutBehavior()
     
     var bricks =  [Int:BrickView]()
     
+    lazy var paddle: PaddleView = {
+        let frame = CGRect(x: -1, y: -1, width: Int(self.bounds.size.width), height: 15)
+        let paddle = PaddleView(frame: frame)
+        self.addSubview(paddle)
+        return paddle;
+    }()
+    
+    
+    // BRICKS
     
     func createBricks(arrangement: [[Int]]) {
         if arrangement.count == 0 { return }    // no rows
@@ -49,6 +62,54 @@ class GamePlayView: UIView {
         
         addSubview(brick)
         //behavior.addBoundary( UIBezierPath(roundedRect: brick.frame, cornerRadius: brick.layer.cornerRadius), named: (bricks.count - 1) )
+    }
+    
+    //PADDLE
+    
+    var paddleWidthPercentage = 33
+    
+    func setPaddleWidth(percentageOfGamefield: Int) {
+        paddleWidthPercentage = percentageOfGamefield
+        paddle.bounds.size.width = self.bounds.size.width / 100.0 * CGFloat(paddleWidthPercentage)
+    }
+    
+    func translatePaddle(translation: CGPoint) {
+        var newFrame = paddle.frame
+        newFrame.origin.x = max( min(newFrame.origin.x + translation.x, self.bounds.maxX - paddle.bounds.size.width), 0.0) // min = 0, max = maxX - paddle width
+        
+        /*for ball in balls {
+            if CGRectContainsRect(newFrame, ball.frame) {
+                return
+            }
+        }*/
+        
+        paddle.frame = newFrame;
+        updatePaddleBoundary()
+    }
+    
+    private func resetPaddlePosition() {
+        if !self.bounds.contains(paddle.frame) {
+            paddle.center = CGPoint(x: self.bounds.midX, y: self.bounds.maxY - paddle.bounds.height - Constants.PaddleBottomMargin)
+        } else {
+            paddle.center = CGPoint(x: paddle.center.x, y: self.bounds.maxY - paddle.bounds.height - Constants.PaddleBottomMargin)
+        }
+        
+        updatePaddleBoundary()
+    }
+    
+    func updatePaddleBoundary() {
+        behavior.addBoundary(UIBezierPath(ovalIn: paddle.frame), named: Constants.paddleBoundaryId as NSCopying)
+    }
+    
+    func panPaddle(_ gesture: UIPanGestureRecognizer) {
+        let gesturePoint = gesture.translation(in: self)
+        switch gesture.state {
+        case .ended: fallthrough
+        case .changed:
+            translatePaddle(translation: gesturePoint)
+            gesture.setTranslation(CGPoint.zero, in:self)
+        default: break
+        }
     }
     
 

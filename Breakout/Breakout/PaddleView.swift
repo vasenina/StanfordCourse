@@ -1,38 +1,28 @@
 //
-//  BrickView.swift
+//  PaddleView.swift
 //  Breakout
 //
-//  Created by Yulia Vasenina on 05/01/2017.
+//  Created by Yulia Vasenina on 04/02/2017.
 //  Copyright © 2017 Yulia Vasenina. All rights reserved.
 //
 
 import UIKit
 
-class BrickView: UIView {
+class PaddleView: UIView {
 
-    private struct Constants{
-        static let corner: CGFloat  = 2.0
+    private struct Constants {
         static let backgroundColor = UIColor(red:0.0, green:122.0/255.0, blue:1.0, alpha:1.0)
+        static let cornerRadius: CGFloat = 2.0
     }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     override init (frame : CGRect) {
         super.init(frame : frame)
-        
-        self.layer.cornerRadius = Constants.corner
         self.backgroundColor = Constants.backgroundColor
+        self.layer.cornerRadius = Constants.cornerRadius
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-
 }
