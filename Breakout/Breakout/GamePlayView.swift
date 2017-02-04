@@ -17,6 +17,7 @@ class GamePlayView: UIView {
         static let brickSideSpacing: CGFloat = 10.0
         static let paddleBoundaryId = "paddleBoundary"
         static let PaddleBottomMargin: CGFloat = 30.0
+        static let PaddleWidthPercentage: Int = 33
     }
     
     var behavior = BreakoutBehavior()
@@ -31,9 +32,24 @@ class GamePlayView: UIView {
     }()
     
     
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        resetPaddlePosition()
+        // Помещаем balls обратно в breakoutView после автовращения
+        /*for ball in balls {
+            if !self.bounds.contains(ball.frame) {
+                placeBallBack(ball: ball)
+            }
+        }*/
+    }
+    
+    
     // BRICKS
     
     func createBricks(arrangement: [[Int]]) {
+        
         if arrangement.count == 0 { return }    // no rows
         if arrangement[0].count == 0 { return } // no columns
         
@@ -66,7 +82,12 @@ class GamePlayView: UIView {
     
     //PADDLE
     
-    var paddleWidthPercentage = 33
+    var paddleWidthPercentage :Int = Constants.PaddleWidthPercentage {
+        didSet{
+            if  paddleWidthPercentage == oldValue{ return}
+            resetPaddleInCenter()
+        }
+    }
     
     func setPaddleWidth(percentageOfGamefield: Int) {
         paddleWidthPercentage = percentageOfGamefield
@@ -85,6 +106,11 @@ class GamePlayView: UIView {
         
         paddle.frame = newFrame;
         updatePaddleBoundary()
+    }
+    
+    private func resetPaddleInCenter(){
+        paddle.center = CGPoint.zero
+        resetPaddlePosition()
     }
     
     private func resetPaddlePosition() {
@@ -113,5 +139,10 @@ class GamePlayView: UIView {
     }
     
 
+    //
+    func reset(){
+      
+        resetPaddleInCenter()
+    }
 
 }
