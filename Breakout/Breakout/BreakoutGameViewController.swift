@@ -15,12 +15,11 @@ class BreakoutGameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         breakout.createBricks(arrangement: Levels.levels[0])
-        breakout.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(GamePlayView.panPaddle)))
+        breakout.addGestureRecognizer(UIPanGestureRecognizer(target: breakout, action: #selector(GamePlayView.panPaddle(_:))))
         
     }
     
     @IBOutlet weak var breakout: GamePlayView!
-
     
     
     
