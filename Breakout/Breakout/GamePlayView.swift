@@ -18,6 +18,7 @@ class GamePlayView: UIView {
         static let paddleBoundaryId = "paddleBoundary"
         static let PaddleBottomMargin: CGFloat = 30.0
         static let PaddleWidthPercentage: Int = 33
+        static let PaddleHeight: Int = 15
     }
     
     var behavior = BreakoutBehavior()
@@ -89,9 +90,9 @@ class GamePlayView: UIView {
         }
     }
     
-    func setPaddleWidth(percentageOfGamefield: Int) {
-        paddleWidthPercentage = percentageOfGamefield
-        paddle.bounds.size.width = self.bounds.size.width / 100.0 * CGFloat(paddleWidthPercentage)
+    private var paddleSize : CGSize {
+        let width = self.bounds.size.width / 100.0 * CGFloat(paddleWidthPercentage)
+        return CGSize(width: width, height: CGFloat(Constants.PaddleHeight))
     }
     
     func translatePaddle(translation: CGPoint) {
@@ -114,6 +115,7 @@ class GamePlayView: UIView {
     }
     
     private func resetPaddlePosition() {
+        paddle.frame.size = paddleSize
         if !self.bounds.contains(paddle.frame) {
             paddle.center = CGPoint(x: self.bounds.midX, y: self.bounds.maxY - paddle.bounds.height - Constants.PaddleBottomMargin)
         } else {
